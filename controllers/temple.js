@@ -34,7 +34,7 @@ exports.create = (req, res) => {
 
 exports.findAll = (req, res) => {
   console.log(req.header('apiKey'));
-  if (req.header('apiKey') === apiKey) {
+ // if (req.header('apiKey') === apiKey) {
     Temple.find(
       {},
       {
@@ -55,15 +55,15 @@ exports.findAll = (req, res) => {
             err.message || 'Some error occurred while retrieving temples.',
         });
       });
-  } else {
+  //} else {
     res.send('Invalid apiKey, please read the documentation.');
   }
-};
+//};
 
 // Find a single Temple with an id
 exports.findOne = (req, res) => {
   const temple_id = req.params.temple_id;
-  if (req.header('apiKey') === apiKey) {
+  //if (req.header('apiKey') === apiKey) {
     Temple.find({ temple_id: temple_id })
       .then((data) => {
         if (!data)
@@ -77,10 +77,10 @@ exports.findOne = (req, res) => {
           message: 'Error retrieving Temple with temple_id=' + temple_id,
         });
       });
-  } else {
+  //} else {
     res.send('Invalid apiKey, please read the documentation.');
   }
-};
+//};
 
 // // Update a Temple by the id in the request
 // exports.update = (req, res) => {
